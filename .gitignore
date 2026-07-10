@@ -30,10 +30,6 @@ playground.xcworkspace
 # Swift Package Manager
 .build/
 .swiftpm/
-Package.resolved
-
-# CocoaPods (раскомментируй, если не хочешь коммитить Pods)
-# Pods/
 
 # Carthage
 Carthage/Build/

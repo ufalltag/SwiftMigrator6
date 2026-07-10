@@ -1,0 +1,40 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		AAAAAAAAAAAAAAAAAAAAAA01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = AAAAAAAAAAAAAAAAAAAAAA02;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAAAAAAAAAAAAAAAAAAAAA03;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+		AAAAAAAAAAAAAAAAAAAAAA02 /* Build configuration list */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AAAAAAAAAAAAAAAAAAAAAA03 /* Main group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+	};
+	rootObject = AAAAAAAAAAAAAAAAAAAAAA01 /* Project object */;
+}
