@@ -42,4 +42,6 @@ fastlane/test_output
 
 # Прочее
 *.log
-docs/
+docs/*
+# architecture.md — исключение: критерий приёмки SWIFTMIG-8 требует диаграмму в git
+!docs/architecture.md
