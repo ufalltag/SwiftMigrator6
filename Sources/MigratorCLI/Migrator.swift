@@ -2,11 +2,12 @@ import ArgumentParser
 import MigratorCore
 
 @main
-struct Migrator: ParsableCommand {
+struct Migrator: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "migrator",
         abstract: "Автоматизированная миграция iOS/macOS проектов с Swift 5 на Swift 6.",
-        version: MigratorCore.version
-        // Подкоманды analyze/report появятся в SWIFTMIG-9
+        discussion: "Коды возврата: 0 — успех, 1 — ошибка анализа, 2 — невалидный вход.",
+        version: MigratorCore.version,
+        subcommands: [Analyze.self, Report.self]
     )
 }
