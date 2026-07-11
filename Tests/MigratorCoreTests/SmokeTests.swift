@@ -37,13 +37,11 @@ import XcodeProj
     #expect(project.pbxproj.nativeTargets.isEmpty)
 }
 
-@Test func cliPrintsHelp() throws {
+@Test(.enabled(if: migratorBinaryExists, "нужен бинарь migrator — есть только под swift test"))
+func cliPrintsHelp() throws {
     // given
-    let binary = Bundle.module.bundleURL
-        .deletingLastPathComponent()
-        .appendingPathComponent("migrator")
     let process = Process()
-    process.executableURL = binary
+    process.executableURL = migratorBinary
     process.arguments = ["--help"]
     let pipe = Pipe()
     process.standardOutput = pipe

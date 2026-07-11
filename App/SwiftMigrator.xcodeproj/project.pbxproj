@@ -17,10 +17,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AA0000032E0000030000AA03 /* MigratorUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
 			path = MigratorUI;
 			sourceTree = "<group>";
 		};
