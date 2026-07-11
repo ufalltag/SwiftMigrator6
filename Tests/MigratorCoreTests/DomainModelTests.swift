@@ -54,23 +54,38 @@ private func makeSampleProposal() -> FixProposal {
 }
 
 @Test func analyzedProjectCodableRoundTrip() throws {
+    // given
     let original = makeSampleProject()
+
+    // when
     let data = try JSONEncoder().encode(original)
     let decoded = try JSONDecoder().decode(AnalyzedProject.self, from: data)
+
+    // then
     #expect(decoded == original)
 }
 
 @Test func fixProposalCodableRoundTrip() throws {
+    // given
     let original = makeSampleProposal()
+
+    // when
     let data = try JSONEncoder().encode(original)
     let decoded = try JSONDecoder().decode(FixProposal.self, from: data)
+
+    // then
     #expect(decoded == original)
     #expect(decoded.status == .proposed)
 }
 
 @Test func migrationRouteEncodesAssociatedValue() throws {
+    // given
     let route = MigrationRoute.deterministic(FixRuleID(rawValue: "global-var-to-let"))
+
+    // when
     let data = try JSONEncoder().encode(route)
     let decoded = try JSONDecoder().decode(MigrationRoute.self, from: data)
+
+    // then
     #expect(decoded == route)
 }
