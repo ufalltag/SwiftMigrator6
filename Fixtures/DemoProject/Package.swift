@@ -6,5 +6,5 @@ let package = Package(
     targets: [
         .target(name: "DemoCore"),
         .target(name: "DemoUI", dependencies: ["DemoCore"]),
-    ]
+    ]т
 )

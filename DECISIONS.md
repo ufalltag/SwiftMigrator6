@@ -52,3 +52,9 @@
 - **Маппинг ошибок в коды возврата centralized в `CLISupport.loadProject`**: невалидный вход (нет пути/не проект) → 2, ошибка анализа → 1. Команды не знают про коды — не разъедутся между analyze и report.
 - **`--json` печатает доменную модель как есть** (`AnalyzedProject` через Codable из SWIFTMIG-7) — отдельного слоя DTO для CLI нет, пока не понадобится.
 - **Фикстура `Fixtures/DemoProject`** — общая для CLI-тестов и ручных прогонов; в её DemoCore уже лежит глобальная `var` — будущий тест-кейс для фиксов этапа 2.
+
+## 2026-07-11 — UI: паттерн MV с @Observable, sandbox выключен (SWIFTMIG-10)
+
+- **MV с `@Observable`, а не MVVM.** Один `@MainActor @Observable` `AppState` — корневая модель, DI core-сервисов через init (порты из SWIFTMIG-8), раздача view через `.environment`. Отдельный ViewModel на каждый экран не заводим: view в SwiftUI и так тонкие декларации, вся логика уходит за порты core, а `@Observable` (macOS 14+) даёт гранулярные апдейты без Combine-обвязки. Если экраны усложнятся — выделить фичевые `@Observable`-модели рядом с `AppState`, но не «VM на view».
+- **App Sandbox выключен** (в таргете нет `.entitlements`, подпись ad-hoc). SwiftMigrator — инструмент разработчика вне App Store: ему нужен произвольный доступ к папкам чужих проектов, а на этапах 1–3 — запуск компилятора/`xcodebuild`, что в sandbox не работает. `NSOpenPanel` без sandbox отдаёт обычный URL без ограничений; security-scoped bookmarks не нужны. Если когда-нибудь понадобится App Store-дистрибуция — включить sandbox и хранить bookmarks выбранных папок (осознанный будущий trade-off).
+- **UI живёт на `MockProjectLoader` внутри app-таргета** (мок из тестового таргета недоступен app'у). Замена на реальный лоадер этапа 1 — одна строка DI в `MigratorUIApp`, симметрично решению CLI из SWIFTMIG-9.
